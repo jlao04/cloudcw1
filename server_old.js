@@ -1,16 +1,3 @@
-// Run a node.js web server for local development of a static web site.
-// Start with "node server.js" and put pages in a "public" sub-folder.
-// Visit the site at the address printed on the console.
-
-// The server is configured to be platform independent.  URLs are made lower
-// case, so the server is case insensitive even on Linux, and paths containing
-// upper case letters are banned so that the file system is treated as case
-// sensitive even on Windows.
-
-// Load the library modules, and define the global constants.
-// See http://en.wikipedia.org/wiki/List_of_HTTP_status_codes.
-// Start the server: change the port to the default 80, if there are no
-// privilege issues and port number 80 isn't already in use.
 
 // Variables for sql Database and filesystem
 var fs = require("fs");
@@ -22,9 +9,9 @@ var nextId = 1;
 var http = require("http");
 var OK = 200, NotFound = 404, BadType = 415, Error = 500, TooLarge = 413;
 var types, banned;
-start(8080);
+start(80);
 
-// Start the http service.  Accept only requests from localhost, for security.
+// Start the http service.
 function start(port) {
     types = defineTypes();
     banned = [];
@@ -33,7 +20,7 @@ function start(port) {
     service.listen(port);
     // if (port != 80) address = address + ":" + port + "/index.html";
     console.log("Server running");
-    //testSQL();
+
 }
 
 // Serve a request by delivering a file.
@@ -354,12 +341,7 @@ function banUpperCase(root, folder) {
     }
 }
 
-// The most common standard file extensions are supported, and html is
-// delivered as xhtml ("application/xhtml+xml").  Some common non-standard file
-// extensions are explicitly excluded.  This table is defined using a function
-// rather than just a global variable, because otherwise the table would have
-// to appear before calling start().  NOTE: for a more complete list, install
-// the mime module and adapt the list it provides.
+
 function defineTypes() {
     var types = {
         nextImage : "/nextImage",
