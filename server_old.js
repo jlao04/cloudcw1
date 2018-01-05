@@ -15,7 +15,9 @@
 // Variables for sql Database and filesystem
 var fs = require("fs");
 var sql = require("sqlite3");
-var db = new sql.Database("data.db");
+const path = require('path')
+const dbPath = path.resolve(__dirname, 'data.db')
+var db = new sql.Database(dbPath);
 var nextId = 1;
 
 
