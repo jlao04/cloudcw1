@@ -15,9 +15,7 @@
 // Variables for sql Database and filesystem
 var fs = require("fs");
 var sql = require("sqlite3");
-const path = require('path')
-const dbPath = path.resolve(__dirname, 'data.db')
-var db = new sql.Database(dbPath);
+var db = new sql.Database("data.db");
 var nextId = 1;
 
 
@@ -33,9 +31,8 @@ function start(port) {
     banUpperCase("./public/", "");
     var service = http.createServer(handle);
     service.listen(port);
-    var address = "http://localhost";
     if (port != 80) address = address + ":" + port + "/index.html";
-    console.log("Server running at", address);
+    console.log("Server running");
     //testSQL();
 }
 
@@ -223,7 +220,7 @@ function handleSaveImage (request, response){
   function end() {
     // WHEN IMAGE HAS FINISHED BEING UPLOADED
     var origNumber = body.substr(0,body.indexOf('origEnd'));
-    var imageBase64body = body.substr(body.indexOf('origEnd')+7); // "tocirah sneab"
+    var imageBase64body = body.substr(body.indexOf('origEnd')+7); 
 
     var base64Data = imageBase64body.replace(/^data:image\/png;base64,/, "");
 

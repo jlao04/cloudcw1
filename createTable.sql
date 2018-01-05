@@ -21,7 +21,7 @@ insert into userImages (userImageID,origImageID, location, score) values (4, 1, 
 insert into userImages (userImageID,origImageID, location, score) values (5, 1, "userimages/test5.png", 3);
 
 
-insert into comments (userImageID, comment) values (3, "Cool drawing dude!");
+insert into comments (userImageID, comment) values (3, "Cool picture dude!");
 
 
 pragma foreign_keys = on;
