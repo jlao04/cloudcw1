@@ -31,7 +31,7 @@ function start(port) {
     banUpperCase("./public/", "");
     var service = http.createServer(handle);
     service.listen(port);
-    if (port != 80) address = address + ":" + port + "/index.html";
+    // if (port != 80) address = address + ":" + port + "/index.html";
     console.log("Server running");
     //testSQL();
 }
@@ -220,7 +220,7 @@ function handleSaveImage (request, response){
   function end() {
     // WHEN IMAGE HAS FINISHED BEING UPLOADED
     var origNumber = body.substr(0,body.indexOf('origEnd'));
-    var imageBase64body = body.substr(body.indexOf('origEnd')+7); 
+    var imageBase64body = body.substr(body.indexOf('origEnd')+7);
 
     var base64Data = imageBase64body.replace(/^data:image\/png;base64,/, "");
 
